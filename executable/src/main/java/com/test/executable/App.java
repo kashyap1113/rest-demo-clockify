@@ -87,8 +87,8 @@ public class App {
 		int hour = workDurationMinute / 60;
 		int minute = workDurationMinute % 60;
 		
-		int remainingHour = (int) ((estimatedWorkHourInMinute - workDurationMinute) / 60);
-		int remainingMinute = (int) ((estimatedWorkHourInMinute - workDurationMinute) % 60);
+		int remainingHour = (int) (Math.abs(estimatedWorkHourInMinute - workDurationMinute) / 60);
+		int remainingMinute = (int) (Math.abs(estimatedWorkHourInMinute - workDurationMinute) % 60);
 		String remainingDurationSign = estimatedWorkHourInMinute - workDurationMinute > 0 ? "-" : "+";
 		
 		String workDuration = String.format("%02d:%02d (" + remainingDurationSign + "%02d:%02d)", hour, minute, remainingHour, remainingMinute);
