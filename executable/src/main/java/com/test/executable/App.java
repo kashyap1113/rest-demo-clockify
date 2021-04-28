@@ -70,6 +70,7 @@ public class App {
 		Duration duration;
 		long workDurationMillis = 0;
 		SimpleDateFormat sdfISO = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		long estimatedWorkHourInMinute = 8 * 60;
 		for (int i = 0; i < tasks.length(); i++) {
 			task = tasks.getJSONObject(i);
 			if (task.getJSONObject("timeInterval").isNull("duration")) {
@@ -85,7 +86,12 @@ public class App {
 		int workDurationMinute = (int) (workDurationMillis / (1000 * 60));
 		int hour = workDurationMinute / 60;
 		int minute = workDurationMinute % 60;
-		String workDuration = String.format("%02d:%02d", hour, minute);
+		
+		int remainingHour = (int) ((estimatedWorkHourInMinute - workDurationMinute) / 60);
+		int remainingMinute = (int) ((estimatedWorkHourInMinute - workDurationMinute) % 60);
+		String remainingDurationSign = estimatedWorkHourInMinute - workDurationMinute > 0 ? "-" : "+";
+		
+		String workDuration = String.format("%02d:%02d (" + remainingDurationSign + "%02d:%02d)", hour, minute, remainingHour, remainingMinute);
 		
 		printContent(taskName, taskLink, workDuration, taskRunning);
 	}
