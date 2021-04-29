@@ -102,10 +102,7 @@ public class App {
 		String tooltip = taskName;
 		
 		if (taskRunning) {
-			if ((System.currentTimeMillis() / 1000) % 2 == 0)
-				imagePath = "/home/intel/Pictures/button_green_16x16.png";
-			else
-				imagePath = "/home/intel/Pictures/button_white_16x16.png";
+			imagePath = "/home/intel/Pictures/led_blinksgreen_16x16.gif";
 		} else {
 			imagePath = "/home/intel/Pictures/button_red_16x16.png";
 		}
