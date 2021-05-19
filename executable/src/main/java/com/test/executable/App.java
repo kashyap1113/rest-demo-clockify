@@ -69,7 +69,10 @@ public class App {
 		String taskDuration;
 		Duration duration;
 		long workDurationMillis = 0;
+		
 		SimpleDateFormat sdfISO = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+		sdfISO.setTimeZone(TimeZone.getTimeZone("UTC"));
+		
 		long estimatedWorkHourInMinute = 8 * 60;
 		for (int i = 0; i < tasks.length(); i++) {
 			task = tasks.getJSONObject(i);
